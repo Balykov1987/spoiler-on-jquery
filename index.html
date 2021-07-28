@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<style>
+	.wrapper	{
+		height: 100%;
+		padding: 50px;
+	}
+	.block__item {
+		margin: 0 0 20px 0;
+	}
+		.block__title {
+			text-transform: uppercase;
+			letter-spacing: 2px;
+			position: relative;
+			padding: 0px 0px 0px 30px;
+			cursor: pointer;
+		}
+		.block__title:before,
+		.block__title:after {
+			content: ' ';
+			width: 10px;
+			height: 1px;
+			background-color: #000;
+			position: absolute;
+			top: 5px;
+		}
+		.block__title:before {
+			transform: rotate(40deg);
+			left: 0;
+		}
+		.block__title:after {
+			transform: rotate(-40deg);
+			left: 8px;
+		}
+		.block__text {
+			padding: 10px 0 0 0;
+			display: none;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="block one">
+		<div class="block__item">
+			<div class="block__title">Заголовок 1</div>
+			<div class="block__text">Lorem ipsum dolor sit, amet consectetur adipisicing, elit. Quibusdam, quas.</div>
+		</div>
+		<div class="block__item">
+			<div class="block__title">Заголовок 2</div>
+			<div class="block__text">Lorem ipsum dolor sit, amet consectetur adipisicing, elit. Quibusdam, quas.</div>
+		</div>
+		<div class="block__item">
+			<div class="block__title">Заголовок 3</div>
+			<div class="block__text">Lorem ipsum dolor sit, amet consectetur adipisicing, elit. Quibusdam, quas.</div>
+		</div>
+	</div>
+	</div>
+	
+
+
+	<script>
+		$(document).ready(function() {
+			$('.block__title').click(function(event) {
+				if($('.block').hasClass('one')) {
+					$('.block__title').not($(this)).removeClass('block__title-active');
+					$('.block__text').not($(this).next()).slideUp(300);
+				}
+				$(this).toggleClass('block__title-active').next().slideToggle(300);
+			})
+		});
+	</script>
+</body>
+</html>
